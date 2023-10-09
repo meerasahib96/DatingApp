@@ -14,6 +14,7 @@ public class UsersController : BaseApiController
     public UsersController(DatabaseContext context){
         _context = context;
     }
+    [AllowAnonymous]
     [HttpGet]
     public async  Task<ActionResult<IEnumerable<AppUser>>> GetUsers(){
         var users = await _context.Users.ToListAsync();
