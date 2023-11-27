@@ -17,6 +17,7 @@ public AccountController(DatabaseContext context, ITokenService tokenService){
 _context = context;
 _tokenService = tokenService;
 }
+
 [HttpPost("register")] //post : /api/account/register
 public async Task<ActionResult<UserDto>> Register (RegisterDto registerDto)
 {
@@ -32,8 +33,8 @@ public async Task<ActionResult<UserDto>> Register (RegisterDto registerDto)
     _context.Users.Add(user);
     await _context.SaveChangesAsync();
     return new UserDto{
-         userName = user.UserName,
-         token = _tokenService.CreateToken(user)
+         Username = user.UserName,
+         Token = _tokenService.CreateToken(user)
     };
 }
 
@@ -52,8 +53,8 @@ public async Task<ActionResult<UserDto>> Login (LoginDto loginDto)
     return Unauthorized("Incorrect password");
  }
   return new UserDto{
-         userName = user.UserName,
-         token = _tokenService.CreateToken(user)
+         Username = user.UserName,
+         Token = _tokenService.CreateToken(user)
     };
 
 }

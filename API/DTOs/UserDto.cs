@@ -2,7 +2,7 @@ namespace API.DTOs
 {
     public class UserDto
     {
-        public String userName { get; set; }
-        public string  token { get; set; }
+        public string Username { get; set; }
+        public string  Token { get; set; }
     }
 }
